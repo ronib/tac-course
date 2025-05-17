@@ -1,4 +1,4 @@
-resource "aws_instance" "lesson_06" {
+resource "aws_instance" "lesson_05" {
   ami           = "ami-097a2df4ac947655f"
   instance_type = "t2.micro"
   key_name      = "aws_key"
@@ -8,16 +8,15 @@ resource "aws_instance" "lesson_06" {
     aws_security_group.sg_http.id
   ]
 
-  user_data = file("../scripts/apache-mkdocs.yaml")
 
   tags = {
-    Name = "Lesson_06-Cloud-Init"
+    Name = "Lesson_05"
   }
 }
 
 resource "aws_key_pair" "deployer" {
   key_name   = "aws_key"
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIY4VuZwyyoFQl5RYSd5NNrWaur3bwoPaJhQUUpaVFR/ roni@RoniPc"
+  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF2YIJbi6ZkiOPVn+/D2+UyN2HFPANfPK14bsdo+y9pW roni@RoniPc"
 }
 
 resource "aws_security_group" "sg_ssh" {
